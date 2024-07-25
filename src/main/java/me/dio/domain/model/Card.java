@@ -2,10 +2,24 @@ package me.dio.domain.model;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity(name = "tb_card")
 public class Card {
+    
     //Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
     private String number;
+
+    @Column(name = "available_limit", scale = 13, precision = 2)
     private BigDecimal limit;
     
     //Getters & Setters
